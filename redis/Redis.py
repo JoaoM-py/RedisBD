@@ -13,12 +13,20 @@ conR = redis.Redis(
 """ conR.set('user:name', 'branquinho')
 
 print(conR.get('user:name')) """
-conR.set('ticket:braquinho', '{"nome": "branquinhodobololo", "desconto":50}')
+conR.set('produto:caneca', '{"nome": "Caneca maneira", "preco":50.00}')
 
 def findAll():
-    ticket = conR.get('ticket:braquinho')
+    ticket = conR.get('produto:caneca')
     js = json.dumps({"response": json.loads(ticket)})
     print(js)
+
+def delete():
+    print("\n####DELETE####")
+    conR.delete('produto:caneca')
+    dl = conR.get('produto:caneca')
+    print(dl)
+
+
 
 
 
@@ -31,3 +39,5 @@ def findAll():
 
 #main
 findAll()
+delete()
+

@@ -47,10 +47,10 @@ def insert():
     global mydb
     mycol = mydb.produto
     print("\n####INSERT####")
-    mylist = {'nome': 'Garrafa gamer', 'Descricao': 'garrafa dia das mães', 'preco': 5.00 }
-    dp = json.dumps(mylist)
-    conR.set('produto:{"_id}', {dp})
-    ld = json.loads(dp)
+    """     mylist = {'nome': 'Garrafa gamer', 'Descricao': 'garrafa dia das mães', 'preco': 5.00 }
+    dp = json.dumps(mylist) """
+    st = conR.set('produto:garrafa', '{"Descricao": "garrafa dia das mães", "preco": 5.00}')
+    ld = json.loads(st)
     x  = mycol.insert_one(ld)
     print(x.inserted_id)
 
