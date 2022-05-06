@@ -42,16 +42,16 @@ def findQuery():
     for x in mydoc:
         print(x)
 
+
 def insert():
     #Insert
     global mydb
     mycol = mydb.produto
     print("\n####INSERT####")
-    """     mylist = {'nome': 'Garrafa gamer', 'Descricao': 'garrafa dia das mães', 'preco': 5.00 }
-    dp = json.dumps(mylist) """
-    st = conR.set('produto:garrafa', '{"Descricao": "garrafa dia das mães", "preco": 5.00}')
-    ld = json.loads(st)
-    x  = mycol.insert_one(ld)
+    mylist = {'produto:caneca', '{"nome": "Caneca maneira", "preco":50.00}'}
+    conR.set('produto:caneca', mylist)
+    ReqJson = json.dumps({"Produto": json.loads(mylist)})
+    x  = mycol.insert_one(ReqJson)
     print(x.inserted_id)
 
 def update():

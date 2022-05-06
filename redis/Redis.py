@@ -15,29 +15,33 @@ conR = redis.Redis(
 print(conR.get('user:name')) """
 conR.set('produto:caneca', '{"nome": "Caneca maneira", "preco":50.00}')
 
-def findAll():
-    ticket = conR.get('produto:caneca')
-    js = json.dumps({"response": json.loads(ticket)})
-    print(js)
+def find():
+    Req = conR.get('produto:caneca')
+    ReqJson = json.dumps({"Produto": json.loads(Req)})
+    return ReqJson
+
+
 
 def delete():
     print("\n####DELETE####")
     conR.delete('produto:caneca')
-    dl = conR.get('produto:caneca')
-    print(dl)
-
-
-
-
-
-
-
-
+    empty = conR.get('produto:caneca')
+    if empty == None:
+        empty = "Produto não existe ou foi deletado"
+    return empty
 
 
 
 
 #main
-findAll()
-delete()
+print(f"{find()}")
+print(f"{delete()}")
+
+
+
+
+
+
+
+
 
